@@ -8,12 +8,8 @@ use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
-    public function index(){
-        return "sei nella index!";
-    }
-
-    public function profile(){
-        $users = User::all();
-        return view("admin.profile", compact("users"));
+    public function homepage()
+    {
+        return view("admin.homepage");
     }
 }

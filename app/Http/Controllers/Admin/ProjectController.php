@@ -15,7 +15,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::all();
-        return view("projects.index", compact("projects"));
+        return view("admin.projects.index", compact("projects"));
     }
 
     /**
@@ -23,7 +23,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view("projects.create");
+        return view("admin.projects.create");
     }
 
     /**
@@ -39,9 +39,9 @@ class ProjectController extends Controller
         $newProject->riassunto = $data['riassunto'];
         $newProject->save();
         if ($request->action === "save_add"){
-            return redirect()->route("projects.create");
+            return redirect()->route("admin.projects.create");
         }
-        return redirect()->route("projects.show", $newProject->id);
+        return redirect()->route("admin.projects.show", $newProject->id);
     }
 
     /**
@@ -49,7 +49,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        return view("projects.show", compact("project"));
+        return view("admin.projects.show", compact("project"));
     }
 
     /**
@@ -57,7 +57,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view("projects.edit", compact("project"));
+        return view("admin.projects.edit", compact("project"));
     }
 
     /**
@@ -72,7 +72,7 @@ class ProjectController extends Controller
         $project->riassunto = $data['riassunto'];
         $project->update();
 
-        return redirect()->route("projects.show", $project);
+        return redirect()->route("admin.projects.show", $project);
     }
 
     /**
@@ -81,6 +81,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route("projects.index");
+        return redirect()->route("admin.projects.index");
     }
 }

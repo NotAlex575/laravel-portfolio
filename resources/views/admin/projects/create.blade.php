@@ -3,7 +3,7 @@
 @section("title", "Crea Progetto")
 
 @section("contenuto")
-    <form action="{{ route("projects.store") }}" method="post" class="container my-5 p-4 border rounded shadow-sm bg-light">
+    <form action="{{ route("admin.projects.store") }}" method="post" class="container my-5 p-4 border rounded shadow-sm bg-light">
 
     @csrf
             <h4 class="mb-4 text-center">Aggiungi un nuovo progetto!</h4>

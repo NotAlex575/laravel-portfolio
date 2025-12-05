@@ -3,7 +3,7 @@
 @section("title", "Modifica Progetto")
 
 @section("contenuto")
-    <form action="{{ route('projects.update', $project->id) }}"method="POST" class="container my-5 p-4 border rounded shadow-sm bg-light">
+    <form action="{{ route('admin.projects.update', $project->id) }}"method="POST" class="container my-5 p-4 border rounded shadow-sm bg-light">
     @csrf
     @method("PUT")
 
