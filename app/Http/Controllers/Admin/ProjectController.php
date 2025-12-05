@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use PhpParser\NodeVisitor\CommentAnnotatingVisitor;
 
 class ProjectController extends Controller
 {
@@ -54,9 +55,9 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Project $project)
     {
-        //
+        return view("projects.edit", compact("project"));
     }
 
     /**
