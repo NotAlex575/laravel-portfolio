@@ -1,13 +1,13 @@
 @extends("layouts/projects")
 
-@section("title", "Crea Progetto")
+@section("title", "Modifica Progetto")
 
 @section("contenuto")
-    <form action="{{ route("projects.store", $project) }}" method="post" class="container my-5 p-4 border rounded shadow-sm bg-light">
-
+    <form action="{{ route('projects.update', $project->id) }}"method="POST" class="container my-5 p-4 border rounded shadow-sm bg-light">
     @csrf
     @method("PUT")
-            <h4 class="mb-4 text-center">Aggiungi un nuovo progetto!</h4>
+
+            <h4 class="mb-4 text-center">Modifica il progetto!</h4>
 
             <div class="row g-3">
                 <div class="col-12">
@@ -32,7 +32,7 @@
                         name="riassunto" 
                         id="riassunto" 
                         rows="4" 
-                        placeholder="Spiegazione progetto" required>{{ $project->riassunto }}"</textarea>
+                        placeholder="Spiegazione progetto" required>{{ $project->riassunto }}</textarea>
                 </div>
 
                 <div class="col-12 text-center mt-4">

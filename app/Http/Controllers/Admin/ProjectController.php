@@ -63,16 +63,16 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $editedProject)
+    public function update(Request $request, Project $project)
     {
         $data = $request->all();
-        $editedProject->nome = $data['nome'];
-        $editedProject->cliente = $data['cliente'];
-        $editedProject->periodo_inizio = $data['periodo_inizio'];
-        $editedProject->riassunto = $data['riassunto'];
-        $editedProject->update();
+        $project->nome = $data['nome'];
+        $project->cliente = $data['cliente'];
+        $project->periodo_inizio = $data['periodo_inizio'];
+        $project->riassunto = $data['riassunto'];
+        $project->update();
 
-        return redirect()->route("projects.show", $editedProject);
+        return redirect()->route("projects.show", $project);
     }
 
     /**
