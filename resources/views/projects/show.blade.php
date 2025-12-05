@@ -28,9 +28,9 @@
                     <a href="{{ route('projects.edit', $project) }}" class="btn btn-warning px-4">
                         Modifica il progetto
                     </a>
-                    <a href="{{ route('projects.edit', $project) }}" class="btn btn-danger px-4">
-                        Elimina il progetto
-                    </a>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                        Elimina definitivamente
+                    </button>
 
                 </div>
             </div>
@@ -40,6 +40,30 @@
     <a href="{{ route('projects.index') }}" class="btn btn-secondary mt-4 px-4">
         Torna indietro alla lista dei progetti
     </a>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Elimina progetto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Sei sicuro di voler eliminare questo progetto??
+            </div>
+            <div class="modal-footer">
+                <form action="{{ route("projects.destroy", $project) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <input type="submit" class="btn btn-danger" value="ELIMINA DEFINITIVAMENTE!">
+                </form>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+            </div>
+            </div>
+        </div>
+    </div>
 
 </div>
 
