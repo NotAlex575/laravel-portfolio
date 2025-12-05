@@ -25,7 +25,8 @@ Route::middleware(['auth', 'verified'])
 ->name("admin.")
 ->prefix("admin")
 ->group(function(){
-    
+    //INDEX
+    //PROFILE
 });
 
 */
