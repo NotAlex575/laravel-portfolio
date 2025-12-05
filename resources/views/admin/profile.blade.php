@@ -1,3 +1,0 @@
-@php
- dd($users)
-@endphp
