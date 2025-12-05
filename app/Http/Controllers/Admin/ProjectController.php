@@ -30,7 +30,17 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $newProject = new Project();
+        $newProject->nome = $data['nome'];
+        $newProject->cliente = $data['cliente'];
+        $newProject->periodo_inizio = $data['periodo_inizio'];
+        $newProject->riassunto = $data['riassunto'];
+        $newProject->save();
+        if ($request->action === "save_add"){
+            return redirect()->route("projects.create");
+        }
+        return redirect()->route("projects.show", $newProject->id);
     }
 
     /**

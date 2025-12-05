@@ -11,17 +11,17 @@
             <div class="row g-3">
                 <div class="col-12">
                     <label for="titolo_input" class="form-label">Titolo Progetto</label>
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il titolo del progetto qui">
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Inserisci il titolo del progetto qui" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="artista_input" class="form-label">Nome Cliente</label>
-                    <input type="text" class="form-control" id="cliente" name="cliente" placeholder="Inserisci qui il nome del cliente">
+                    <input type="text" class="form-control" id="cliente" name="cliente" placeholder="Inserisci qui il nome del cliente" required>
                 </div>
 
                 <div class="col-md-6">
                     <label for="periodo_inizio" class="form-label">Inizio data progetto</label>
-                    <input type="datetime-local" class="form-control" id="periodo_inizio" name="periodo_inizio">
+                    <input type="datetime-local" class="form-control" id="periodo_inizio" name="periodo_inizio" required>
                 </div>
 
                <div class="col-12">
@@ -31,11 +31,19 @@
                         name="riassunto" 
                         id="riassunto" 
                         rows="4" 
-                        placeholder="Spiegazione progetto"></textarea>
+                        placeholder="Spiegazione progetto" required></textarea>
                 </div>
 
-                <div class="col-12 text-center mt-4">
-                    <button type="submit" class="btn btn-primary px-5">Invia</button>
+                <div class="col-6 text-center mt-4">
+                    <button type="submit" class="btn btn-primary px-5" name="action" value="save_show">
+                        Invia e mostra il nuovo progetto
+                    </button>
+                </div>
+
+                <div class="col-6 text-center mt-4">
+                    <button type="submit" class="btn btn-secondary px-5" name="action" value="save_add">
+                        Invia e aggiungi un altro progetto
+                    </button>
                 </div>
             </div>
         </form>
