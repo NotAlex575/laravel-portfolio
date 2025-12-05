@@ -16,11 +16,11 @@
 
             <p class="card-text">{{ $project->riassunto }}</p>
 
-            <a href="{{ route('projects.index') }}" class="btn btn-primary mt-3">
-                Torna indietro alla lista dei progetti
-            </a>
         </div>
     </div>
+    <a href="{{ route('projects.index') }}" class="btn btn-primary mt-3">
+        Torna indietro alla lista dei progetti
+    </a>
 </div>
 
 @endsection

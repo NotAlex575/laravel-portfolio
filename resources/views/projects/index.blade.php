@@ -20,10 +20,12 @@
                     <td>{{ $project["nome"] }}</td>
                     <td>{{ $project["cliente"] }}</td>
                     <td>{{ $project["periodo_inizio"] }}</td>
-                    <td><a href="{{ route("projects.show", $project->id) }}">Link al Progetto</a></td>
+                    <td><a class="btn btn-primary" href="{{ route("projects.show", $project->id) }}">Link al Progetto</a></td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+
+    <a class="btn btn-outline-success" href="{{ route("projects.create") }}">Crea nuovo progetto</a>
 
 @endsection
