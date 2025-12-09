@@ -17,7 +17,7 @@ class CodesTableSeeder extends Seeder
 
         foreach($codes as $code){
             $newCode = new Code();
-            $newCode->name = $code;
+            $newCode->code_name = $code;
             $newCode->save();
         }
     }
