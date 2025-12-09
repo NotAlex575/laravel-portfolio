@@ -10,6 +10,7 @@
         <div class="card-body p-4">
 
             <h1 class="card-title mb-3">Nome Progetto: {{ $project->nome }}</h1>
+            <h4 class="card-subtitle mb-4 text-muted">{{ $project->code->code_name }}</h4>
             <h5 class="card-subtitle mb-4 text-muted">Cliente: {{ $project->cliente }}</h5>
 
             <p class="mb-3">

@@ -8,6 +8,7 @@
         <thead class="table-primary">
             <tr>
                 <th>Nome Progetto</th>
+                <th>Codice Usato</th>
                 <th>Nome Cliente</th>
                 <th>Iniziato il</th>
                 <th>Link Progetto</th>
@@ -18,6 +19,7 @@
             @foreach ($projects as $project)
                 <tr>
                     <td>{{ $project["nome"] }}</td>
+                    <td>{{ $project->code->code_name }}</td>
                     <td>{{ $project["cliente"] }}</td>
                     <td>{{ $project["periodo_inizio"] }}</td>
                     <td><a class="btn btn-primary" href="{{ route("admin.projects.show", $project->id) }}">Link al Progetto</a></td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Code;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use PhpParser\NodeVisitor\CommentAnnotatingVisitor;
@@ -23,7 +24,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view("admin.projects.create");
+        $codes = Code::all();
+        return view("admin.projects.create", compact("codes"));
     }
 
     /**
@@ -34,6 +36,7 @@ class ProjectController extends Controller
         $data = $request->all();
         $newProject = new Project();
         $newProject->nome = $data['nome'];
+        $newProject->code_id = $data['code_id'];
         $newProject->cliente = $data['cliente'];
         $newProject->periodo_inizio = $data['periodo_inizio'];
         $newProject->riassunto = $data['riassunto'];
@@ -67,6 +70,7 @@ class ProjectController extends Controller
     {
         $data = $request->all();
         $project->nome = $data['nome'];
+        $project->code_id = $data['code_id'];
         $project->cliente = $data['cliente'];
         $project->periodo_inizio = $data['periodo_inizio'];
         $project->riassunto = $data['riassunto'];

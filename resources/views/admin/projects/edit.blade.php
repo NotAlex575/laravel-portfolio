@@ -15,6 +15,16 @@
                     <input type="text" class="form-control" id="nome" name="nome" value="{{ $project->nome }}" required>
                 </div>
 
+                <div class="col-12">
+                    <label for="codes" class="form-label">Codice usato</label>
+                    <select name="code_id", id="code_id">
+                        @foreach ($codes as $code)
+                            <option value="{{ $code->id }}" {{ $project->code_id == $code_id? "selected": ""}}></option>
+                         @endforeach
+                    </select>
+                </div>
+
+
                 <div class="col-md-6">
                     <label for="artista_input" class="form-label">Nome Cliente</label>
                     <input type="text" class="form-control" id="cliente" name="cliente" value="{{ $project->cliente }}" required>

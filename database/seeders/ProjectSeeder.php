@@ -43,6 +43,7 @@ class ProjectSeeder extends Seeder
             $newProject->cliente = $project['cliente'];
             $newProject->periodo_inizio = $project['periodo_inizio'];
             $newProject->riassunto = $project['riassunto'];
+            $newProject->code_id = rand(1,5);
             $newProject->save();
         }
 
