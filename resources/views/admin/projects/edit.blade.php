@@ -19,11 +19,28 @@
                     <label for="codes" class="form-label">Codice usato</label>
                     <select name="code_id", id="code_id">
                         @foreach ($codes as $code)
-                            <option value="{{ $code->id }}" {{ $project->code_id == $code_id? "selected": ""}}></option>
+                            <option value="{{ $code->id }}" {{ $project->code_id == $code->id ? 'selected' : '' }}>
+                                {{ $code->code_name }}
+                            </option>
                          @endforeach
                     </select>
                 </div>
 
+                {{-- tags --}}
+                <div class="form-control mb-3 d-flex flex-wrap">
+                    @foreach ($technologies as $technology)
+                        <div class="tag me-2">
+                            <input 
+                                type="checkbox" 
+                                name="technologies[]" 
+                                value="{{ $technology->id }}" 
+                                id="technologies-{{ $technology->id }}"
+                                {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}
+                            >
+                            <label for="technologies-{{ $technology->id }}">{{ $technology->name }}</label>
+                        </div>
+                    @endforeach
+                </div>
 
                 <div class="col-md-6">
                     <label for="artista_input" class="form-label">Nome Cliente</label>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Code;
 use App\Models\Project;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 use PhpParser\NodeVisitor\CommentAnnotatingVisitor;
 
@@ -25,7 +26,10 @@ class ProjectController extends Controller
     public function create()
     {
         $codes = Code::all();
-        return view("admin.projects.create", compact("codes"));
+
+        $technologies = Technology::all();
+
+        return view("admin.projects.create", compact("codes", "technologies"));
     }
 
     /**
@@ -41,6 +45,12 @@ class ProjectController extends Controller
         $newProject->periodo_inizio = $data['periodo_inizio'];
         $newProject->riassunto = $data['riassunto'];
         $newProject->save();
+
+        // Dopo aver salvato il post, controllo se ho ricevuto dei tag
+        if ($request->has('technologies')) {
+            $newProject->technologies()->attach($data['technologies']);
+        }
+
         if ($request->action === "save_add"){
             return redirect()->route("admin.projects.create");
         }
@@ -60,8 +70,12 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view("admin.projects.edit", compact("project"));
+        $codes = Code::all();
+        $technologies = Technology::all();
+
+        return view("admin.projects.edit", compact("project", "codes", "technologies"));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -74,8 +88,14 @@ class ProjectController extends Controller
         $project->cliente = $data['cliente'];
         $project->periodo_inizio = $data['periodo_inizio'];
         $project->riassunto = $data['riassunto'];
-        $project->
         $project->update();
+
+        // Dopo aver salvato il post, controllo se ho ricevuto dei tag
+        if ($request->has('technologies')) {
+            $project->technologies()->sync($data['technologies']);
+        } else {
+            $project->technologies()->detach();
+        }
 
         return redirect()->route("admin.projects.show", $project);
     }
@@ -85,7 +105,12 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        // Rimuove tutte le relazioni nella pivot
+        $project->technologies()->detach();
+
+        // Poi cancella il progetto
         $project->delete();
+
         return redirect()->route("admin.projects.index");
     }
 }

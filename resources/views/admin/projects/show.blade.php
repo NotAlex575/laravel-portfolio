@@ -4,6 +4,8 @@
 
 @section("contenuto")
 
+
+
 <div class="container mt-5">
 
     <div class="card shadow-lg border-0">
@@ -11,7 +13,18 @@
 
             <h1 class="card-title mb-3">Nome Progetto: {{ $project->nome }}</h1>
             <h4 class="card-subtitle mb-4 text-muted">{{ $project->code->code_name }}</h4>
-            <h5 class="card-subtitle mb-4 text-muted">Cliente: {{ $project->cliente }}</h5>
+
+            <small>
+                @if (count($project->technologies) > 0)
+                    @foreach ($project->technologies as $technology)
+                        <span class="badge" style="background-color: {{ $technology->color }}">
+                            {{ $technology->name }}
+                        </span>
+                    @endforeach
+                @endif
+            </small>
+
+            <h5 class="card-subtitle mt-2 mb-4 text-muted">Cliente: {{ $project->cliente }}</h5>
 
             <p class="mb-3">
                 <strong>Data di inizio:</strong> {{ $project->periodo_inizio }}

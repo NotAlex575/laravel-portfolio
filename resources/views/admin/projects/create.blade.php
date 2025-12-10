@@ -24,6 +24,21 @@
                         </select>
                     </div>
 
+                    {{-- tags --}}
+                    <div class="form-control mb-3 d-flex flex-wrap">
+                        @foreach ($technologies as $technology)
+                            <div class="tag me-2">
+                                <input 
+                                    type="checkbox" 
+                                    name="technologies[]" 
+                                    value="{{ $technology->id }}" 
+                                    id="technologies-{{ $technology->id }}"
+                                >
+                                <label for="technologies-{{ $technology->id }}">{{ $technology->name }}</label>
+                            </div>
+                        @endforeach
+                    </div>
+
                     <div class="col-md-6">
                         <label for="artista_input" class="form-label">Nome Cliente</label>
                         <input type="text" class="form-control" id="cliente" name="cliente" placeholder="Inserisci qui il nome del cliente" required>
